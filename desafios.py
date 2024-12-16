@@ -135,8 +135,69 @@
 
 
 # 15 Escreva um programa que concatene duas strings fornecidas pelo usuário.
-parte1 = input("Digite a primeira parte do texto: ")
-parte2 = input("Digite a segunda parte do texto: ")
+#parte1 = input("Digite a primeira parte do texto: ")
+#parte2 = input("Digite a segunda parte do texto: ")
+#
+#texto_concatenado = parte1 + parte2
+#print("Texto concatenado:", texto_concatenado)
 
-texto_concatenado = parte1 + parte2
-print("Texto concatenado:", texto_concatenado)
+
+
+###############################################################################################
+###############################################################################################
+
+
+# EXERCICIOS DE TRY EXECPT
+
+# 1 Escreva um programa que converta a temperatura de Celsius para Fahrenheit. O programa deve solicitar ao usuário a temperatura em Celsius e, utilizando try-except, garantir que a entrada seja numérica, tratando qualquer ValueError. Imprima o resultado em Fahrenheit ou uma mensagem de erro se a entrada não for válida.
+
+#try:
+#    celsius = float(input("Digite o grau em °C: "))
+#
+#    fahre = (celsius * 9/5) + 32
+#
+#    print(f"{celsius} em Fahrenheit são: {fahre}")
+#except ValueError:
+#    print("Digite um valor numerico")
+
+# EXERCICIO FINAL
+
+# Solicita ao usuário que digite seu nome
+try:
+    nome = input("Digite seu nome: ")
+
+    # Verifica se o nome está vazio
+    if len(nome) == 0:
+        raise ValueError("O nome não pode estar vazio.")
+    # Verifica se há números no nome
+    elif any(char.isdigit() for char in nome):
+        raise ValueError("O nome não deve conter números.")
+    else:
+        print("Nome válido:", nome)
+except ValueError as e:
+    print(e)
+
+# Solicita ao usuário que digite o valor do seu salário e converte para float
+
+try:
+    salario = float(input("Digite o valor do seu salário: "))
+    if salario < 0:
+        print("Por favor, digite um valor positivo para o salário.")
+except ValueError:
+    print("Entrada inválida para o salário. Por favor, digite um número.")
+
+# Solicita ao usuário que digite o valor do bônus recebido e converte para float
+try:
+    bonus_recebido = float(input("Digite o valor do bônus recebido: "))
+    if bonus_recebido < 0:
+        print("Por favor, digite um valor positivo para o bônus.")
+except ValueError:
+    print("Entrada inválida para o bônus. Por favor, digite um número.")
+
+# Assumindo uma lógica de cálculo para o bônus final e KPI
+bonus_final = bonus_recebido * 1.2  # Exemplo, ajuste conforme necessário
+kpi = (salario + bonus_final) / 1000  # Exemplo simples de KPI
+
+# Imprime as informações para o usuário
+print(f"Seu KPI é: {kpi:.2f}")
+print(f"{nome}, seu salário é R${salario:.2f} e seu bônus final é R${bonus_final:.2f}.")
